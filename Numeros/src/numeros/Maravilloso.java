@@ -17,9 +17,9 @@ import javax.microedition.midlet.*;
 
 /**
  * @author tona
- * Created on 6/02/2019
+ * Created on 7/02/2019
  */
-public class Fibonacci extends MIDlet implements CommandListener {
+public class Maravilloso extends MIDlet implements CommandListener {
     private Display  d;
     private Form  f;
     private TextField tf;
@@ -29,14 +29,13 @@ public class Fibonacci extends MIDlet implements CommandListener {
     private Command cr;
     private TextBox tb;
     
-    private int fn1 = 0;
-    private int fn2 = 1;
+    int MAX_ITERACIONES = 70;
     
-    public Fibonacci() {
+    public Maravilloso() {
         d  = Display.getDisplay(this);
         tf = new TextField("Número:", "", 10, TextField.NUMERIC);
         //si = new StringItem("¿Es fibonacci?:", "");
-        f  = new Form ("Sucesión de fibonacci");
+        f  = new Form ("Numeros Maravillosos");
         tb = new TextBox("Estado", "Sin Conexion", 400, TextField.ANY);
         f.append(tf);
         //f.append(si);
@@ -61,26 +60,27 @@ public class Fibonacci extends MIDlet implements CommandListener {
     public void destroyApp(boolean unconditional) {
     }
     
-    public int obtenerFibo() {
-        int aux = fn1;
-        fn1 = fn2;
-        fn2 = aux + fn2;
-        return fn2;
+    public long  maravilloso(long x) {
+        if (x % 2 == 0)
+            return x/2;
+        return 3*x+1;
     }
 
-    public void commandAction(Command c, Displayable dis) {
+    public void commandAction(Command c, Displayable dd) {
         if (c == cc) {
-            fn1 = 0;
-            fn2 = 1;
-            int numero = Integer.parseInt(tf.getString());
-            String resultado = "No es fibonacci";
-            StringBuffer lista = new StringBuffer("0,1");
-            while (obtenerFibo() <= numero) {
-                lista.append(",").append(fn2);
-                if (fn2 == numero) {
-                    resultado = "Es fibonacci";
+            int i = 0;
+            long x = Integer.parseInt(tf.getString());
+            String resultado = "No es maravilloso";
+            StringBuffer lista = new StringBuffer();
+            lista.append(x);
+            while (i < MAX_ITERACIONES) {
+                if (x == 1) {
+                    resultado = "Es maravilloso";
                     break;
                 }
+                x = maravilloso(x);
+                lista.append(",").append(x);
+                i++;
             }
             lista.append("\n").append(resultado);
             tb.setString(lista.toString());
