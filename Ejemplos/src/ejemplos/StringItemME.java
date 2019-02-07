@@ -46,7 +46,9 @@ public class StringItemME extends MIDlet implements CommandListener {
     
     protected void destroyApp(boolean b) {
         d.setCurrent(new Alert("", "MIDlet terminado.", null, AlertType.ERROR));
-    }  public void commandAction(Command co, Displayable di) {
+    }  
+    
+    public void commandAction(Command co, Displayable di) {
         if (co == cs) {
             destroyApp(true);
             notifyDestroyed();
