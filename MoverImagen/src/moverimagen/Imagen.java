@@ -6,14 +6,13 @@
 
 package moverimagen;
 
-import javax.microedition.midlet.*;
 import javax.microedition.lcdui.*;
 
 /**
  * @author tona
  * Created on 11/02/2019
  */
-public class Imagen extends MIDlet implements CommandListener {
+public class Imagen extends Canvas implements CommandListener {
     private MoverImagen mi;
     private Image im;
     private Command c;
@@ -25,7 +24,7 @@ public class Imagen extends MIDlet implements CommandListener {
         this.addCommand(c);
         this.setCommandListener(this);
         try {						// Carpeta para la imagen, por ejemplo:
-            im = Image.createImage("/foto.png");	//...\NetBeansProjects\MiProyecto\build\compiled\foto.png
+            im = Image.createImage("/pika.jpg");	//...\NetBeansProjects\MiProyecto\build\compiled\foto.png
         } catch (Exception e) {
             // System.out.println("Error al cargar archivo de imagen");
         }
