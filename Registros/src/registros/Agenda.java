@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package agenda;
+package registros;
 
 import java.io.IOException;
 import javax.microedition.lcdui.*;
@@ -12,7 +12,7 @@ import javax.microedition.midlet.*;
 
 /**
  * @author tona
- * Created on 1/02/2019
+ * Created on 13/02/2019
  */
 public class Agenda extends MIDlet implements CommandListener {
     Command commandSalir;
@@ -25,8 +25,8 @@ public class Agenda extends MIDlet implements CommandListener {
     Image img;
     ImageItem imgI;
     DateField df;
-    ChoiceGroup cg;
-    int i, j;
+    ChoiceGroup	cg;
+    int	i, j;
     String[] SEXO = {"Hombre", "Mujer"};
     
     public Agenda() {
@@ -106,7 +106,7 @@ public class Agenda extends MIDlet implements CommandListener {
             alerta.setTimeout(2000);
             i++;
         } else if(co == commandRegresar){
-            // Al darle regresar recuperamos los datos
+            // AL darle regresar recuperamos los datos
             if(cg.getSelectedIndex() == 0){
                 sel = "Hombre";
             } else{
@@ -128,3 +128,4 @@ public class Agenda extends MIDlet implements CommandListener {
         }
     }
 }
+

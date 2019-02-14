@@ -66,7 +66,7 @@ public class Sonidos extends MIDlet implements CommandListener {
     
     public void playWav(){
         try { 
-            InputStream in = getClass().getResourceAsStream("/resources/risas.wav"); 
+            InputStream in = getClass().getResourceAsStream("/resources/you_got_it.wav"); 
             Player p = Manager.createPlayer(in, "audio/x-wav"); 
             p.start(); 
         }catch (Exception e){
