@@ -21,7 +21,6 @@ public class Registros {
     RecordStore rs;
 
     public Registros(){
-
     }
 	
     public boolean abrir(String zona){
