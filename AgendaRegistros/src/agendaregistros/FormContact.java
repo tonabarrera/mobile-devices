@@ -91,7 +91,7 @@ public class FormContact extends Form implements CommandListener {
             midletPrincipal.contactList.constructList();
             midletPrincipal.d.setCurrent(midletPrincipal.contactList);
         } else if (co == commandSelectPhoto) {
-            //midletPrincipal.d.setCurrent(midletPrincipal.lf);
+            midletPrincipal.d.setCurrent(midletPrincipal.photoList);
         }
     }
 }

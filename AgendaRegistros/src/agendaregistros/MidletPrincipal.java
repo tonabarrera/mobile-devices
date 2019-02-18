@@ -17,10 +17,12 @@ public class MidletPrincipal extends MIDlet {
     Display d; 
     FormContact formContact;
     ContactList contactList;
+    PhotoList photoList;
     public MidletPrincipal() {
         d = Display.getDisplay(this);
         contactList = new ContactList(this);
-        formContact = new FormContact(this); 
+        formContact = new FormContact(this);
+        photoList = new PhotoList(this);
     }
     public void startApp() {
         d.setCurrent(formContact); 
