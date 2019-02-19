@@ -105,7 +105,9 @@ public class Persistence {
         try {
             data = rs.getRecord(recordId);
         } catch (RecordStoreException ex) {
-            ex.printStackTrace();
+            //ex.printStackTrace();
+            System.out.println("NO LO ENCONTRO: " + ex.toString());
+            return null;
         }
         DataInputStream dis = new DataInputStream(new ByteArrayInputStream(data));
         try {
@@ -120,5 +122,65 @@ public class Persistence {
             ex.printStackTrace();
         }
         return person;
+    }
+    
+    public boolean deleteRecord(int id) {
+        try {
+            rs.deleteRecord(id);
+            return true;
+        } catch (RecordStoreException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+    
+    public int findRecord(String n, String l) {
+        int resultado = -1;
+        try {
+            for (int i = 1; i < rs.getNextRecordID(); i++) {
+                byte[] data = null;
+                try {
+                    data = rs.getRecord(i);
+                } catch (RecordStoreException ex) {
+                    System.out.println("DATA NULA continuando..." + ex.toString());
+                    continue;
+                }
+                DataInputStream dis = new DataInputStream(new ByteArrayInputStream(data));
+                String nombre = dis.readUTF();
+                String lastName = dis.readUTF();
+                System.out.println("findRecord: " + nombre + " " + lastName);
+                if (n.equals(nombre) && l.equals(lastName)) {
+                    resultado = i;
+                    break;
+                }
+            }
+        } catch (RecordStoreNotOpenException ex) {
+            System.out.println("TRY 1: " + ex.toString());
+        } catch (IOException ex) {
+            System.out.println("TRY 3: " + ex.toString());
+        } catch (RecordStoreException ex) {
+            System.out.println("TRY 2: " + ex.toString());
+        }
+        return resultado;
+    }
+
+    void update(int id, Person person) {
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            DataOutputStream dos = new DataOutputStream(baos);
+            dos.writeUTF(person.getName());
+            dos.writeUTF(person.getLastName());
+            dos.writeUTF(person.getTelephone());
+            dos.writeUTF(person.getCellPhone());
+            dos.writeUTF(person.getAddress());
+            dos.writeUTF(person.getPhoto());
+            dos.close();
+            byte[] data = baos.toByteArray( );
+            rs.setRecord(id, data, 0, data.length);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } catch (RecordStoreException ex) {
+            ex.printStackTrace();
+        }
     }
 }

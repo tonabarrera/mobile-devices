@@ -63,7 +63,7 @@ public class FormContact extends Form implements CommandListener {
             midletPrincipal.notifyDestroyed();
         } else if (co == commandSave) {
             Persistence persistence = new Persistence();
-            persistence.deletePersistence();
+            //persistence.deletePersistence();
             persistence.open();
             
             Person person = new Person();
@@ -75,6 +75,7 @@ public class FormContact extends Form implements CommandListener {
             person.setPhoto(foto);
             
             persistence.save(person);
+            System.out.println("Se guardo: " + persistence.getNumRecords());
             persistence.close();
             
             alert = new Alert("NOTA", "Guardado", null, AlertType.CONFIRMATION);

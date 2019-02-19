@@ -21,7 +21,7 @@ public class ContactList extends List implements CommandListener {
 
     Command commandRegister, commandDelete, commandEdit;
     MidletPrincipal midletPrincipal;
-    Vector eliminados = new Vector();
+    Vector listaTemporal = new Vector();
 
     public ContactList(MidletPrincipal mid) {
         super("Contactos", Choice.IMPLICIT);
@@ -41,85 +41,65 @@ public class ContactList extends List implements CommandListener {
     public void commandAction(Command co, Displayable d) {
         if (co == commandRegister) {
             midletPrincipal.d.setCurrent(midletPrincipal.formContact);
-        }
-        if (co == commandDelete) {
-            //delete();
-        }
-        if (co == commandEdit) {
-            //edit();
+        } else if (co == commandDelete) {
+            delete();
+        } else if (co == commandEdit) {
+           edit();
         }
     }
 
     public void constructList() {
         try {
+            listaTemporal = new Vector();
             deleteAll();
             Persistence persistence = new Persistence();
             persistence.open();
-            for (int i = 1; i <= persistence.getNumRecords(); i++) {
+            System.out.println("TAM registro: " + persistence.getNumRecords() 
+                    + " siguiente: " + persistence.rs.getNextRecordID());
+            for (int i = 1; i < persistence.rs.getNextRecordID(); i++) {
                 Person person = persistence.getElement(i);
-                System.out.println(person.toString());
-                Image photoImage = Image.createImage(person.getPhoto());
-                append(person.getName() + " " + person.getLastName(), photoImage);
+                if (person == null) {
+                    System.out.println("nulo en el registro: " + i);
+                } else {
+                    System.out.println("No nulo en el registro: " + i);
+                    Image photoImage = Image.createImage(person.getPhoto());
+                    listaTemporal.addElement(person);
+                    append(person.getName() + " " + person.getLastName(), photoImage);
+                }
             }
             persistence.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    /*
+    
     public void delete() {
-        try {
-            for (int i = 1; i < size(); i++) {
-                if (isSelected(i)) {
-                    String find = "" + i;
-                    //eliminados.addElement(findtodelete(find));
-                }
-            }
-            constructList();
-            midletPrincipal.d.setCurrent(midletPrincipal.formContact);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Persistence persistence = new Persistence();
+        persistence.open();
+        System.out.println("Tamaño: " +listaTemporal.size());
+        System.out.println("Seleccionado: " 
+                + listaTemporal.elementAt(this.getSelectedIndex()).toString() 
+                + " indice: " + this.getSelectedIndex());
+        Person seleccionado = (Person) listaTemporal.elementAt(this.getSelectedIndex());
+        int id = persistence.findRecord(seleccionado.getName(), seleccionado.getLastName());
+        System.out.println("Indice recuperado: " + id + " Tam: " + persistence.getNumRecords());
+        Person encontrado = persistence.getElement(id);
+        System.out.println("Encontrado: " + encontrado.toString());
+        persistence.deleteRecord(id);
+        constructList();
+        System.out.println("BORRADOfas");
+        persistence.close();
     }
-    */
-    /*
-    public void commandEdit() {
-        try {
-            String f = "";
-            for (int i = 1; i < size(); i++) {
-                if (isSelected(i)) {
-                    String find = "" + i;
-                    f = findtodelete(find);
-                }
-            }
-            midletPrincipal.e.setData((Integer.valueOf(f)).intValue() + 1);
-            midletPrincipal.d.setCurrent(midletPrincipal.e);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    
+    
+    public void edit() {
+        Persistence persistence = new Persistence();
+        persistence.open();
+        Person seleccionado = (Person) listaTemporal.elementAt(this.getSelectedIndex());
+        int id = persistence.findRecord(seleccionado.getName(), seleccionado.getLastName());
+        midletPrincipal.e.setData(id);
+        midletPrincipal.d.setCurrent(midletPrincipal.e);
+        persistence.close();
     }
-    */
-    /*
-    public String findtodelete(String find) {
-        try {
-            RMSOps rmso = new RMSOps();
-            rmso.abrir("ZonaJavaZone");
-            int findindice = (Integer.valueOf(find)).intValue();
-            int counter = 0;
-            for (int i = 1; i < rmso.rs.getNumRecords(); i++) {
-                String finds = "" + i;
-                if (eliminados.indexOf(finds) == -1) {
-                    counter++;
-                }
-                if (counter == findindice) {
-                    return i + "";
-                }
-            }
-            rmso.cerrar();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return 0 + "";
-    }*/
+    
 }

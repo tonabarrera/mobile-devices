@@ -18,11 +18,13 @@ public class MidletPrincipal extends MIDlet {
     FormContact formContact;
     ContactList contactList;
     PhotoList photoList;
+    EditForm e;
     public MidletPrincipal() {
         d = Display.getDisplay(this);
         contactList = new ContactList(this);
         formContact = new FormContact(this);
         photoList = new PhotoList(this);
+        e = new EditForm(this);
     }
     public void startApp() {
         d.setCurrent(formContact); 
