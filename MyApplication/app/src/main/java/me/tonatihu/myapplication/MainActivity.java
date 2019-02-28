@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private int fn1 = 0;
     private int fn2 = 1;
-    private int MAX_ITERACIONES = 70;
+    private static final int MAX_ITERACIONES = 70;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,23 +40,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         int numero = Integer.valueOf(editTextNumero.getText().toString());
         String resultado = "El número " + numero;
-        String mensaje = "";
+        String mensaje;
         if (v.getId() == btnPalindromo.getId()) {
             if(verificarPalindromo(numero))
                 mensaje = " es palindromo";
             else
                 mensaje = " no es palindromo";
+            resultado = resultado + mensaje;
         } else if (v.getId() == btnFibo.getId()) {
-            mensaje = verificarFibo(numero);
+            resultado = verificarFibo(numero);
         } else if (v.getId() == btnMaravilloso.getId()) {
-            mensaje = verificarMaravilloso(numero);
+            resultado = verificarMaravilloso(numero);
         } else if (v.getId() == btnPrimo.getId()) {
             if(verificarPrimo(numero))
                 mensaje = " es primo";
             else
                 mensaje = " no es primo";
+            resultado = resultado + mensaje;
         }
-        resultado = resultado + mensaje;
         textViewResultado.setText(resultado);
     }
 
@@ -73,8 +74,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private String verificarFibo(int numero) {
-        int fn1 = 0;
-        int fn2 = 1;
+        fn1 = 0;
+        fn2 = 1;
         String resultado = "No es fibonacci";
         StringBuilder lista = new StringBuilder("0,1");
         while (calcularFibo() <= numero) {
@@ -84,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             }
         }
-        lista.append("\n");
+        lista.append("\n").append("El numero: ").append(numero).append(" ").append(resultado);
         return lista.toString();
     }
 
