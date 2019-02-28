@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ingresa un número y presiona algun boton" />
+
+    <EditText
+        android:id="@+id/et_numero"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Número"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/btn_primo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Verificar si es primo" />
+
+    <Button
+        android:id="@+id/btn_maravilloso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Verificar si es maravilloso" />
+
+    <Button
+        android:id="@+id/btn_palindromo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Verificar si es palindromo" />
+
+    <Button
+        android:id="@+id/btn_fibonacci"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Verificar si es fibonacci" />
+
+    <TextView
+        android:id="@+id/tv_resultado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Resultado:" />
+</LinearLayout>
