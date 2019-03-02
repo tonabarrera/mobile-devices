@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package figuras.cono;
 
 import figuras.Point2D;
@@ -12,23 +7,22 @@ import figuras.Point3D;
  *
  * @author USER
  */
-public class ObjCono {	// Posee los datos del objeto 3D
+public class ObjCono {
     float rho, theta=0.3F, phi=1.3F, d, objSize;
-    float v11, v12, v13, v21, v22, v23, v32, v33, v43; // elementos de la matriz V
-    Point3D [] w;	// coordenadas universales
-    Point2D [] vScr; // coordenadas de la pantalla
-    public ObjCono(){	// CAMBIAR LAS COORDENADAS X,Y,Z CON 0,1 PARA CONSTRUIR PRISMA, CILINDRO, PIRAMIDE, CONO Y ESFERA.
+    float v11, v12, v13, v21, v22, v23, v32, v33, v43;
+    Point3D [] w;
+    Point2D [] vScr;
+    public ObjCono(){
         w = new Point3D[73];
         vScr = new Point2D[73];
 
-        //Cubo
         double i = 0;
         for (int j=0; j < 72; i+=0.087, j++) {
-            w[j] = new Point3D(Math.cos(i), Math.sin(i), -1); // desde la base
+            w[j] = new Point3D(Math.cos(i), Math.sin(i), -1);
         }
         w[72] = new Point3D(0, 0, 1);
-        objSize = (float) Math.sqrt(12F); // = sqrt(2*2 + 2*2 + 2*2) es la distancia entre dos vertices opuestos
-        rho = 5*objSize;		// para cambiar la perspectiva
+        objSize = (float) Math.sqrt(12F);
+        rho = 5*objSize;
     }
     
     void initPersp(){

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package figuras.esfera;
 
 import figuras.Point2D;
@@ -12,12 +7,12 @@ import figuras.Point3D;
  *
  * @author USER
  */
-public class ObjEsfera {	// Posee los datos del objeto 3D
+public class ObjEsfera {
     float rho, theta=0.3F, phi=1.3F, d, objSize;
-    float v11, v12, v13, v21, v22, v23, v32, v33, v43; // elementos de la matriz V
-    Point3D [] w;	// coordenadas universales
-    Point2D [] vScr; // coordenadas de la pantalla
-    public ObjEsfera(){	// CAMBIAR LAS COORDENADAS X,Y,Z CON 0,1 PARA CONSTRUIR PRISMA, CILINDRO, PIRAMIDE, CONO Y ESFERA.
+    float v11, v12, v13, v21, v22, v23, v32, v33, v43;
+    Point3D [] w;
+    Point2D [] vScr;
+    public ObjEsfera(){
         w = new Point3D[4608];
         vScr = new Point2D[4608];
         double i;

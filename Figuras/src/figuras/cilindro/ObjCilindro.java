@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package figuras.cilindro;
 
 import figuras.Point2D;
@@ -12,23 +7,22 @@ import figuras.Point3D;
  *
  * @author USER
  */
-public class ObjCilindro {	// Posee los datos del objeto 3D
+public class ObjCilindro {
     float rho, theta=0.3F, phi=1.3F, d, objSize;
-    float v11, v12, v13, v21, v22, v23, v32, v33, v43; // elementos de la matriz V
-    Point3D [] w;	// coordenadas universales
-    Point2D [] vScr; // coordenadas de la pantalla
-    public ObjCilindro(){	// CAMBIAR LAS COORDENADAS X,Y,Z CON 0,1 PARA CONSTRUIR PRISMA, CILINDRO, PIRAMIDE, CONO Y ESFERA.
+    float v11, v12, v13, v21, v22, v23, v32, v33, v43;
+    Point3D [] w;
+    Point2D [] vScr;
+    public ObjCilindro(){
         w = new Point3D[144];
         vScr = new Point2D[144];
 
-        //Cubo
         double i = 0;
         for (int j=0; j < 144; i+=0.087, j+=2) {
-            w[j] = new Point3D(Math.cos(i), Math.sin(i), -1); // desde la base
-            w[j+1] = new Point3D(Math.cos(i), Math.sin(i), 1); // desde la base
+            w[j] = new Point3D(Math.cos(i), Math.sin(i), -1);
+            w[j+1] = new Point3D(Math.cos(i), Math.sin(i), 1);
         }
-        objSize = (float) Math.sqrt(12F); // = sqrt(2*2 + 2*2 + 2*2) es la distancia entre dos vertices opuestos
-        rho = 5*objSize;		// para cambiar la perspectiva
+        objSize = (float) Math.sqrt(12F);
+        rho = 5*objSize;
     }
     
     void initPersp(){
