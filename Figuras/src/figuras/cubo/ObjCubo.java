@@ -4,19 +4,22 @@
  * and open the template in the editor.
  */
 
-package figuras;
+package figuras.cubo;
+
+import figuras.Point2D;
+import figuras.Point3D;
 
 /**
  *
  * @author tona
  * Created on 17/02/2019
  */
-public class Obj{	// Posee los datos del objeto 3D
+public class ObjCubo{	// Posee los datos del objeto 3D
     float rho, theta=0.3F, phi=1.3F, d, objSize;
     float v11, v12, v13, v21, v22, v23, v32, v33, v43; // elementos de la matriz V
     Point3D [] w;	// coordenadas universales
     Point2D [] vScr; // coordenadas de la pantalla
-    public Obj(){	// CAMBIAR LAS COORDENADAS X,Y,Z CON 0,1 PARA CONSTRUIR PRISMA, CILINDRO, PIRAMIDE, CONO Y ESFERA.
+    public ObjCubo(){	// CAMBIAR LAS COORDENADAS X,Y,Z CON 0,1 PARA CONSTRUIR PRISMA, CILINDRO, PIRAMIDE, CONO Y ESFERA.
         w = new Point3D[8];
         vScr = new Point2D[8];
 

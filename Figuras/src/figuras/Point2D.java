@@ -12,7 +12,7 @@ package figuras;
  * Created on 17/02/2019
  */
 public class Point2D{
-    float x, y;
+    public float x, y;
     public Point2D(float x, float y){
         this.x = x;
         this.y = y;

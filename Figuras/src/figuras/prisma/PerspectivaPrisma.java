@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 
-package figuras;
+package figuras.prisma;
 
+import figuras.Point2D;
 import javax.microedition.lcdui.*;
 
 /**
@@ -13,11 +14,11 @@ import javax.microedition.lcdui.*;
  * @author tona
  * Created on 17/02/2019
  */
-public class Perspectiva extends Canvas{
+public class PerspectivaPrisma extends Canvas{
     int centerX, centerY, maxX, maxY, minMaxXY;
-    Obj obj = new Obj();
+    ObjPrisma obj = new ObjPrisma();
     
-    public Perspectiva(){
+    public PerspectivaPrisma(){
         centerX = maxX/2;
         centerY = maxY/2;
     }
