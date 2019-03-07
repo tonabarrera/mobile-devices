@@ -8,8 +8,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    TextView textViewResultado;
-    Button btnPrimo;
+    private TextView textViewResultado;
+    private Button btnPrimo;
     Button btnFibo;
     Button btnMaravilloso;
     Button btnPalindromo;
