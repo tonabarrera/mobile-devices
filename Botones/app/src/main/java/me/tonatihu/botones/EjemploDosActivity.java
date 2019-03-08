@@ -16,10 +16,10 @@ public class EjemploDosActivity extends Activity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ejemplo_dos);
 
-        imageButton = (ImageButton) findViewById(R.id.image_button);
+        imageButton = findViewById(R.id.image_button);
         imageButton.setOnClickListener(this);
 
-        toggleButton = (ToggleButton) findViewById(R.id.toggle_button);
+        toggleButton = findViewById(R.id.toggle_button);
         toggleButton.setOnClickListener(this);
     }
 

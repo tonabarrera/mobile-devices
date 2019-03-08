@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private int fn1 = 0;
     private int fn2 = 1;
-    private static final int MAX_ITERACIONES = 70;
+    private static final int MAX_ITERACIONES = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private String verificarMaravilloso(int numero) {
         int i = 0;
+        int aux = numero;
         String resultado = "No es maravilloso";
         StringBuilder lista = new StringBuilder();
         lista.append(numero);
@@ -110,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             lista.append(",").append(numero);
             i++;
         }
-        lista.append("\n").append("El numero: ").append(numero).append(" ").append(resultado);
+        lista.append("\n").append("El numero: ").append(aux).append(" ").append(resultado);
         return lista.toString();
     }
 
