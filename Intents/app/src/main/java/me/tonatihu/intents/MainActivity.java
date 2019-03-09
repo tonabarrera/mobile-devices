@@ -1,7 +1,8 @@
 package me.tonatihu.intents;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
@@ -13,11 +14,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickEjemplo(View view) {
-    }
-
-    public void onClickFormulario(View view) {
+        Intent intent = new Intent(MainActivity.this, EjemploActivity.class);
+        startActivity(intent);
     }
 
     public void onClickEcuacion(View view) {
+        Intent intent = new Intent(MainActivity.this, EcuacionActivity.class);
+        startActivity(intent);
     }
 }
