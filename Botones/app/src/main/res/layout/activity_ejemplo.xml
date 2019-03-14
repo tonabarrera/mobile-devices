@@ -1,38 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".EjemploActivity"
     android:orientation="vertical">
-
-    <Button
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="clickEjemploUno"
-        android:text="Ejemplo 1"/>
+        android:text="Eventos de Button \n\nDigite un botón..."/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btn_uno"
-        android:onClick="clickEjemploDos"
-        android:text="Ejemplo 2"/>
+        android:text="Clase Interna (jbn1)"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btn_dos"
-        android:onClick="clickEjemploTres"
-        android:text="Ejemplo 3"/>
+        android:text="Clase Interna anónima (jbn2)"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btn_floating"
-        android:onClick="clickFloating"
-        android:text="Floating"/>
+        android:id="@+id/btn_tres"
+        android:text="Implanta una interface (jbn3)"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btn_sonidos"
-        android:onClick="clickSonidos"
-        android:text="Sonidos"/>
+        android:id="@+id/btn_cuatro"
+        android:onClick="clickEnXML"
+        android:text="Invoca el método desde XML (jbn4)"/>
 </LinearLayout>

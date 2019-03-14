@@ -1,21 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <EditText
-        android:id="@+id/et_nombre"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text"/>
+    tools:context=".MainActivity"
+    android:orientation="vertical">
 
     <Button
-        android:id="@+id/btn_aceptar"
-        android:layout_width="wrap_content"
+        android:id="@+id/btn_uno"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/et_nombre"
-        android:layout_alignParentEnd="true"
-        android:text="Aceptar" />
-</RelativeLayout>
+        android:onClick="onClickUno"
+        android:text="Ejemplo Relative" />
+    <Button
+        android:id="@+id/btn_dos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickDos"
+        android:text="Ejemplo Linear" />
+    <Button
+        android:id="@+id/btn_tres"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickTres"
+        android:text="Ejemplo Linear 2" />
+    <Button
+        android:id="@+id/btn_cuatro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickCuatro"
+        android:text="Ejemplo Frame" />
+    <Button
+        android:id="@+id/btn_cinco"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickCinco"
+        android:text="Ejemplo Table" />
+    <Button
+        android:id="@+id/btn_seis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickSeis"
+        android:text="Ejemplo Grid" />
+    <Button
+        android:id="@+id/btn_siete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClicSiete"
+        android:text="Ejemplo Scroll" />
+</LinearLayout>
