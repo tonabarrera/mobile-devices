@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".EjemploUnoActivity">
+
+    <TextView
+        android:id="@+id/tv_hola"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hola" />
+
+    <Button
+        android:id="@+id/btn_digitar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Digitar" />
+
+    <FrameLayout
+        android:id="@+id/fl_contenedor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </FrameLayout>
+    <fragment
+        android:id="@+id/fragment_formulario"
+        android:name="me.tonatihu.fragmentos.fragment.FormularioFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>
