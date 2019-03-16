@@ -27,4 +27,8 @@ public class MainActivity extends Activity {
     public void onClickEjemplo(View view) {
         startActivity(new Intent(MainActivity.this, EjemploActivity.class));
     }
+
+    public void onClickEjemploDos(View view) {
+        startActivity(new Intent(MainActivity.this, EjemploDosActivity.class));
+    }
 }

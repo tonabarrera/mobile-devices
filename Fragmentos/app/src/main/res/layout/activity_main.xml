@@ -20,4 +20,10 @@
         android:layout_height="wrap_content"
         android:onClick="onClickEjemploUno"
         android:text="Ejemplo 1" />
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickEjemploDos"
+        android:text="Ejemplo 2" />
 </LinearLayout>
