@@ -1,13 +1,13 @@
 package me.tonatihu.listas;
 
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import androidx.appcompat.app.AppCompatActivity;
 import me.tonatihu.listas.adapter.NuevaEntradaAdapter;
 import me.tonatihu.listas.model.NuevaEntrada;
 

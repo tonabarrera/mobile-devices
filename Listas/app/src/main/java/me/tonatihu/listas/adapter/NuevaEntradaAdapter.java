@@ -25,9 +25,8 @@ public class NuevaEntradaAdapter extends ArrayAdapter<NuevaEntrada> {
         this.entradaLayoutRecurso = resource;
     }
 
-    @androidx.annotation.NonNull
     @Override
-    public View getView(int position, @androidx.annotation.Nullable View convertView, @androidx.annotation.NonNull ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup parent) {
         View view2 = getWorkingView(convertView);
         ViewHolder vh = getViewHolder(view2);
         NuevaEntrada nuevaEntrada = getItem(position);
@@ -35,7 +34,7 @@ public class NuevaEntradaAdapter extends ArrayAdapter<NuevaEntrada> {
         String s = String.format("Por %s on %s", nuevaEntrada.getAutor(), DateFormat.getDateInstance(DateFormat.SHORT).format(nuevaEntrada.getFecha()));
         vh.textViewSubTitulo.setText(s);
         vh.imageView.setImageResource(nuevaEntrada.getIcono());
-        return super.getView(position, convertView, parent);
+        return view2;
     }
 
     private View getWorkingView(View v3) {

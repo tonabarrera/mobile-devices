@@ -13,6 +13,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView textViewCronometro;
     private Button buttonIniciar;
     private Button buttonTerminar;
+    private Button buttonPausa;
+    public static boolean bandera = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         textViewCronometro = findViewById(R.id.text_cronometro);
         buttonIniciar = findViewById(R.id.btn_iniciar);
         buttonTerminar = findViewById(R.id.btn_terminar);
+        buttonPausa = findViewById(R.id.btn_pausa);
 
         buttonIniciar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,12 +48,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void iniciarCronometro() {
+        bandera = true;
+        buttonPausa.setText("Pausa");
         Intent intent = new Intent(this, CronometroService.class);
         startService(intent);
     }
 
+    public void pausarCronometro(View view) {
+        bandera = !bandera;
+        if (bandera)
+            buttonPausa.setText("Pausa");
+        else
+            buttonPausa.setText("Continuar");
+    }
+
     private void detenerCronometro() {
         Intent intent = new Intent(this, CronometroService.class);
+        refrescarCronometro(0);
+        buttonPausa.setText("Pausa");
         stopService(intent);
     }
 

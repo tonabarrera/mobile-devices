@@ -1,5 +1,6 @@
 package me.tonatihu.servicios;
 
+import android.annotation.SuppressLint;
 import android.app.Service;
 import android.content.Intent;
 import android.os.Handler;
@@ -12,6 +13,7 @@ import java.util.TimerTask;
 public class CronometroService extends Service {
     private Timer timer = new Timer();
     private static final long INTERVALO_ACTUALIZACION = 10;
+    @SuppressLint("StaticFieldLeak")
     public static MainActivity UPDATE_LISTENER;
     private double n = 0;
     private Handler handler;
@@ -29,6 +31,7 @@ public class CronometroService extends Service {
         return null;
     }
 
+    @SuppressLint("HandlerLeak")
     @Override
     public void onCreate() {
         super.onCreate();
@@ -48,13 +51,12 @@ public class CronometroService extends Service {
         pararCronometro();
     }
 
-
-
     private void iniciarCronometro() {
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                n += 0.01;
+                if (MainActivity.bandera)
+                    n += 0.01;
                 handler.sendEmptyMessage(0);
             }
         }, 0, INTERVALO_ACTUALIZACION);
