@@ -5,16 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
-
-    <Button
+    tools:context=".EjemploUnoActivity">
+    <Spinner
+        android:id="@+id/spinner_uno"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ejemplo 1"
-        android:onClick="onClickUno"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Ejemplo 2"
-        android:onClick="onClickDos"/>
+        android:prompt="@string/label_opciones"
+        android:entries="@array/array_opciones" />
 </LinearLayout>
