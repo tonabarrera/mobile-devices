@@ -168,17 +168,6 @@ fastlane/readme.md
 # Linux trash folder which might appear on any partition or disk
 
 # .nfs files are created when an open file is removed but is still being accessed
-### ArchLinuxPackages template
-*.tar
-*.tar.*
-*.exe
-*.msi
-*.tgz
-*.log.*
-*.sig
-
-pkg/
-src/
 ### Example user template template
 ### Example user template
 
