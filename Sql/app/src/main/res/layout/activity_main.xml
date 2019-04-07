@@ -37,6 +37,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/string_lista" />
+    <Button
+        android:id="@+id/btn_buscar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickBuscar"
+        android:text="Buscar por id" />
+    <Button
+        android:id="@+id/btn_actualizar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickActualizar"
+        android:text="Actualizar por id" />
+    <Button
+        android:id="@+id/btn_borrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickBorrar"
+        android:text="Borrar por id" />
     <TextView
         android:id="@+id/xtvL"
         android:layout_width="match_parent"
