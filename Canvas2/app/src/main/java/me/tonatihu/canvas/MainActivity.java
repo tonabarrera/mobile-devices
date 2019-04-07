@@ -14,10 +14,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickSeno(View view) {
-        startActivity(new Intent(this, LienzoActivity.class));
+        Intent i = new Intent(this, LienzoActivity.class);
+        i.putExtra("DATO", 2);
+        startActivity(i);
     }
 
     public void onClickLienzo(View view) {
-        startActivity(new Intent(this, SenoActivity.class));
+        Intent i = new Intent(this, LienzoActivity.class);
+        i.putExtra("DATO", 1);
+        startActivity(i);
     }
 }

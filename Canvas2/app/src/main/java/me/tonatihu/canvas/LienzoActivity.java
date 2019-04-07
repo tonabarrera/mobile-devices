@@ -8,6 +8,11 @@ public class LienzoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lienzo);
+
+        int dato = getIntent().getIntExtra("DATO", 1);
+        if (dato == 1)
+            setContentView(new Lienzo(this));
+        else
+            setContentView(new SenoLienzo(this));
     }
 }
