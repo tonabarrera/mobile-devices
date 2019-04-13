@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff"
+    android:id="@+id/container"
+    tools:context=".MainActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textview_uno"
+        android:layout_gravity="center|top"
+        android:layout_margin="20dp"
+        android:text="Scan"
+        android:textColor="#000"
+        android:textSize="30dp"/>
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="80dp"
+        android:id="@+id/btn_qr"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:onClick="onClickScanQR"
+        android:text="Codigo QR"
+        android:textSize="18dp"/>
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="80dp"
+        android:id="@+id/btn_barras"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:onClick="onClickScanBarra"
+        android:text="Codigo de Barras"
+        android:textSize="18dp"/>
+</LinearLayout>
