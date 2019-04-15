@@ -57,7 +57,7 @@ public class EjercicioActivity extends AppCompatActivity {
         });
     }
 
-    private List<ListaEntrada> obtenerPerros() {
+    public static List<ListaEntrada> obtenerPerros() {
         List<ListaEntrada>  entradaList = new ArrayList<>();
         entradaList.add(new ListaEntrada(R.drawable.pastor, "PASTOR ALEMÁN", "El pastor " +
                 "alemán es una de las razas más reconocidas en del mundo. De aspecto noble y " +

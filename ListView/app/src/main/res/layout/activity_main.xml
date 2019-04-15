@@ -17,4 +17,10 @@
         android:layout_height="wrap_content"
         android:text="Ejercicio"
         android:onClick="onClickPerros"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Reciclador"
+        android:onClick="onClickOtro"/>
 </LinearLayout>

@@ -25,4 +25,8 @@ public class MainActivity extends AppCompatActivity {
         i.putExtra("TIPO", 2);
         startActivity(i);
     }
+
+    public void onClickOtro(View view) {
+        startActivity(new Intent(MainActivity.this, RecicladorActivity.class));
+    }
 }
