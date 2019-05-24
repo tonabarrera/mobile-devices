@@ -1,58 +1,99 @@
 package me.tonatihu.notificaciones;
 
-import android.app.Activity;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
-public class UnoActivity extends Activity {
-    int t=200, i=0;
+public class UnoActivity extends AppCompatActivity {
+    private static int i;
+    int t=200;
     boolean c=true;
-    TextView jtv;
-    Button jbnN;
-    private static final int NOTIF_ALERTA_ID = 1;
+    static TextView conteo;
+    private static final int NOTIF_ALERTA_ID=1;
+    NotificationChannel notificationChannel;
+    NotificationManager notificationManager;
+    private final String CHANNEL_ID="some_channel_id";
+    NotificationCompat.Builder builder;
+
     @Override
-    protected void onCreate(Bundle b) {
-        super.onCreate(b);
-        setContentView(R.layout.activity_uno);
-        jtv = findViewById(R.id.xtv);
-        jbnN = findViewById(R.id.xbnN);
-        jbnN.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Toolbar toolbar=findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(getText(R.string.app_name));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
-                NotificationCompat.Builder ncb =
-                        new NotificationCompat.Builder(UnoActivity.this, "notify_001")
-                                .setSmallIcon(android.R.drawable.stat_sys_warning)
-                                .setContentTitle("Alerta de Notificación")
-                                .setContentText("Uso de la notificación." + "i=" + ++i)
-                                .setContentInfo("Un valor")
-                                .setTicker("Mensaje de Alerta!");
-                Intent in = new Intent(UnoActivity.this, UnoActivity.class);
-                PendingIntent pi = PendingIntent.getActivity(UnoActivity.this,0, in,0);
-                ncb.setContentIntent(pi);
-                NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        conteo=findViewById(R.id.cuenta);
 
+        notificationManager=(NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    String channelId = "notify_001";
-                    NotificationChannel channel = new NotificationChannel(channelId,
-                            "Channel human readable title", NotificationManager.IMPORTANCE_DEFAULT);
-                    nm.createNotificationChannel(channel);
-                    ncb.setChannelId(channelId);
+        crearCanal();
+        prepararNotificacion();
+    }
 
-                }
-                nm.notify(NOTIF_ALERTA_ID, ncb.build());
-                jtv.setText("Cuenta: i=" + i);
-            }
-        });
+    public static void actualizarI(){
+        Log.d("actualizar","entre a actualizarI");
+        i=0;
+        conteo.setText("Cuenta: i="+i);
+
+    }
+
+    public void prepararNotificacion(){
+        Intent intentDelete = new Intent(this, MyBroadcastReceiver.class);
+        PendingIntent pendingIntentDelete = PendingIntent.getBroadcast(getApplicationContext(), 0, intentDelete, 0);
+
+        Intent intent=new Intent(this,MainActivity.class);
+        PendingIntent pendingIntent=PendingIntent.getActivity(this,0,intent,0);
+
+        builder=new NotificationCompat.Builder(this,CHANNEL_ID).setSmallIcon(android.R.drawable.stat_sys_warning)
+                .setLargeIcon(getBitmap(R.mipmap.ic_launcher))
+                .setTicker("Mensaje de alerta !");
+        builder.setContentIntent(pendingIntent);
+        builder.setDeleteIntent(pendingIntentDelete);
+    }
+
+    public void notificar(View view){
+        builder.setContentTitle("Alerta de notificación").setContentText("Uso de la notificación: "+"i="+ ++i);
+        notificationManager.notify(NOTIF_ALERTA_ID,builder.build());
+        conteo.setText("Cuenta: i="+i);
+    }
+
+    private Bitmap getBitmap(int drawableRes) {
+        Drawable drawable = getResources().getDrawable(drawableRes);
+        Canvas canvas = new Canvas();
+        Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        canvas.setBitmap(bitmap);
+        drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+        drawable.draw(canvas);
+
+        return bitmap;
+    }
+
+    public void crearCanal(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence channelName = "Some Channel";
+            int importance = NotificationManager.IMPORTANCE_LOW;
+            notificationChannel = new NotificationChannel(CHANNEL_ID, channelName, importance);
+
+            notificationChannel.enableLights(true);
+            notificationChannel.setLightColor(Color.RED);
+            notificationChannel.enableVibration(true);
+            notificationChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
     }
 }
